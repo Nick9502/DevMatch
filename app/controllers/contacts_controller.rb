@@ -6,9 +6,12 @@ class ContactsController < ApplicationController
       #Mass assigns params  
       @contact = Contact.new(contact_params) #{name: "Test", email: "Test", comments: "Test"}
       if @contact.save #If the contact was saved correctly.
-         redirect_to new_contact_path, notice: "Message sent."
+         flash[:success] ="Message sent."
+         redirect_to new_contact_path
       else
-         redirect_to new_contact_path, notice: "Error occured."
+         # Joins eror messages together and displays them.
+         flash[:error] = @contact.errors.full_messages.join(", ") #[error1, error2] become joined
+         redirect_to new_contact_path
       end
     end
     private #Secure Form Admission

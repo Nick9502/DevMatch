@@ -10,7 +10,7 @@ class ContactsController < ApplicationController
          redirect_to new_contact_path
       else
          # Joins eror messages together and displays them.
-         flash[:error] = @contact.errors.full_messages.join(", ") #[error1, error2] become joined
+         flash[:danger] = @contact.errors.full_messages.join(", ") #[error1, error2] become joined
          redirect_to new_contact_path
       end
     end

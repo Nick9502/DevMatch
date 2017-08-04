@@ -33,7 +33,12 @@
     </div><!-- /.navbar-collapse -->
   </div>
 </nav>
-    
+    <div class ="container"> <!-- Placed in application.html so it will show up after any redirect.-->
+      <!-- Flash Message in Ruby -->
+      <% flash.each do |type, msg|%> <!--type is :success or :danger with corresponding message.-->
+        <%= content_tag :div, msg, class: "alert alert-#{type}" %> <!--Div tag in Rails -->
+      <% end %>
+    </div>
       <%= yield %>
 
   </body>

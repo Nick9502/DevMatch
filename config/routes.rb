@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root to:'pages#home'
-  get 'about', to: 'pages#about'
-  resources :contacts
-  get 'contact-us', to: 'contacts#new'
+  get 'about', to: 'pages#about' #Pages controller. About action
+  resources :contacts, only: [:create]
+  get 'contact-us', to: 'contacts#new', as: 'new_contact' #Change contact-us path to new_contact. 
 end

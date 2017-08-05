@@ -1,5 +1,5 @@
 class Contact < ActiveRecord::Base
-    # Form Validation. If not present. Wont save to DB
+    # Contact Form Validation. If not present. Wont save to DB
     validates :name, presence: true
     validates :email, presence: true
     validates :comments, presence: true

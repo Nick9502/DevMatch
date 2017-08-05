@@ -25,6 +25,10 @@
       <% end %>
     </div>
     <div class="collapse navbar-collapse" id="main-nav-collapse">
+      <div class="nav nabar-nav navbar-right">
+        <a href ="/users/sign_in" class="btn btn-default navbar-btn">Log In</a>
+        <a href ="/users/sign_up" class="btn btn-default navbar-btn">Sign Up</a>
+      </div>
       <ul class="nav navbar-nav navbar-right">
         <!-- Best Practice for Adding Links with Rails-->
         <li><%= link_to "About", about_path %></li> <!-- or about_url for full domain-->

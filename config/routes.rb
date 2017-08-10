@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root to:'pages#home'
   devise_for :users, controllers: {registrations: 'users/registrations'}  #Extend functionality. Make registrations_controller seperately.
-  resources :users do
+  resources :users do #User'S' have ONE profile. Plural then singular.
     resource :profile
   end
   get 'about', to: 'pages#about' #Pages controller. About action

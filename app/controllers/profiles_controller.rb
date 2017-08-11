@@ -1,5 +1,6 @@
 class ProfilesController < ApplicationController
-   
+   before_action :authenticate_user! # Authenticates user before any actions can occur.(Devise)
+   before_action :only_current_user #only: [:new, :edit] Can limit. If want.
    # GET to /users/:user_id/profile/new
    def new
         @profile = Profile.new
@@ -43,5 +44,10 @@ class ProfilesController < ApplicationController
       # Whitelist so hackers cant add additional form fields.
       def profile_params
          params.require(:profile).permit(:first_name, :last_name, :avatar, :job_title, :phone_number, :contact_email, :description)
+      end
+      # If currently signed in user doesnt match params rediect to home.
+      def only_current_user
+         @user= User.find( params[:user_id])
+         redirect_to(root_path) unless @user == current_user # unless (Ruby)
       end
 end
